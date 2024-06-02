@@ -14,13 +14,13 @@ interface Product {
 }
 
 const ProductDetailPage: React.FC = () => {
-  const { category, productId, topProducts, minPrice, maxPrice  } = useParams<{ category: string; productId: string; topProducts:any }>();
+  const { category, company, productId, topProducts, minPrice, maxPrice  } = useParams<{ category: string; productId: string; topProducts:any; minPrice:any; maxPrice:any; company:string;    }>();
   const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/categories/${category}/products/${productId}?company=AMZ&top=3&minPrice=1&maxPrice=10000`);
+        const response = await axios.get(`http://localhost:3000/categories/${category}/products/${productId}?company=${company}&top=${topProducts}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
         setProduct(response.data);
       } catch (error) {
         console.error('Error fetching product:', error);
