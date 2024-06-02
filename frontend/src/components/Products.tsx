@@ -14,7 +14,7 @@ interface Product {
 }
 
 const ProductDetailPage: React.FC = () => {
-  const { category, productId } = useParams<{ category: string; productId: string }>();
+  const { category, productId, topProducts, minPrice, maxPrice  } = useParams<{ category: string; productId: string; topProducts:any }>();
   const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
